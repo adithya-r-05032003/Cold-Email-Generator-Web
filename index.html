@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cold Email Generator | Adithya R</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="glass-container">
+    <h1 class="title">🤖 Adithya’s Cold Email Generator</h1>
+    <p class="subtitle">AI-powered outreach for tech roles, auto-personalized with portfolio links</p>
+
+    <form method="POST">
+      <input
+        type="url"
+        name="job_url"
+        placeholder="Paste job posting URL (e.g., https://jobs.nike.com/...)"
+        required
+      >
+      <button type="submit">Generate Email</button>
+    </form>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    {% if email_results %}
+      <div class="results-section">
+        <h2>📩 Generated Cold Emails</h2>
+        {% for item in email_results %}
+          <div class="email-card">
+            <h3>{{ item.role }}</h3>
+            <pre>{{ item.email }}</pre>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
