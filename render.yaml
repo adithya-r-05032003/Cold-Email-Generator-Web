@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: cold-email-generator
+    env: python
+    buildCommand: ""
+    startCommand: python run.py
+    envVars:
+      - key: TOGETHER_API_KEY
+        value: c65cfa7af812800586ab5f62306e4ef3c5dcaa4be9b1cf49cd9c8a22d7672c29
+    plan: free
